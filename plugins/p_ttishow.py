@@ -162,8 +162,8 @@ async def get_ststs(bot, message):
     free = 536870912 - size
     size = get_size(size)
     free = get_size(free)
-    await rju.edit(random.choice(PICS), script.STATUS_TXT.format(total, users, chats, monsize, free), enums.ParseMode.HTML),
-            )
+    await rju.edit(random.choice(PICS), script.STATUS_TXT.format(total, users, chats, monsize, free), enums.ParseMode.HTML)
+            
 elif query.data == "rfrsh":
         await query.answer("Fetching MongoDb DataBase")
         buttons = [[
