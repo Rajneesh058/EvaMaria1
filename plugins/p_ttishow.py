@@ -164,22 +164,6 @@ async def get_ststs(bot, message):
     free = get_size(free)
     await rju.edit(random.choice(PICS), script.STATUS_TXT.format(total, users, chats, monsize, free), enums.ParseMode.HTML)
             
-elif query.data == "rfrsh":
-        await query.answer("Fetching MongoDb DataBase")
-        buttons = [[
-            InlineKeyboardButton('𝚁𝙴𝙵𝚁𝙴𝚂𝙷', callback_data='rfrsh')
-        ]]
-        reply_markup = InlineKeyboardMarkup(buttons)
-        total = await Media.count_documents()
-        users = await db.total_users_count()
-        chats = await db.total_chat_count()
-        monsize = await db.get_db_size()
-        free = 536870912 - monsize
-        monsize = get_size(monsize)
-        free = get_size(free)
-        await query.edit_message_media(
-            InputMediaPhoto(random.choice(PICS), script.STATUS_TXT.format(total, users, chats, monsize, free), enums.ParseMode.HTML),
-        )
 # വാഴ മരത്തെ കളിയാക്കിയവർ തന്നെ പേടിച്ചു ഓടിപ്പോയി
 @Client.on_message(filters.command('invite') & filters.user(ADMINS))
 async def gen_invite(bot, message):
@@ -199,7 +183,7 @@ async def gen_invite(bot, message):
     await message.reply(f'Here is your Invite Link {link.invite_link}')
 
 @Client.on_message(filters.command('ban_user') & filters.user(ADMINS))
-async def ban_a_user(bot, message):
+async def ban_a_uer(bot, message):
     # വാഴ മരത്തെ കളിയാക്കിയവർ തന്നെ പേടിച്ചു ഓടിപ്പോയി
     if len(message.command) == 1:
         return await message.reply('Give me a user id / username')
